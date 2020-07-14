@@ -7,7 +7,7 @@ export const Loading = () => {
     const {t} = useTranslation()
     return(
         <section className="loading-modal">
-            <img src="/assets/images/loading.gif" />
+            <img src="/assets/images/loading.gif" alt="Loading" />
             <p>{t('_WORKING_LOADING')}</p>
         </section>
     )
