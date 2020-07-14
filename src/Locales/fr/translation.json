@@ -1,6 +1,6 @@
 {
-    "_INPUT_URL": "Liens vers le contenue YouTube",
-    "_BUTTON_DOWNLOAD": "Télécharger",
+    "_INPUT_URL": "Lien vers le contenu YouTube",
+    "_BUTTON_DOWNLOAD": "Convertir",
     "_LINK_INVALID": "Ce liens YouTube est invalide",
     "_CLICK_TO_DOWNLOAD": "Cliquez pour télécharger",
 
@@ -14,5 +14,6 @@
     " audio only tiny": "Seulement l'audio",
 
     "_RECOMMENDED": "Recommender",
-    "_WORKING_LOADING": "Traitement du fichier en cours"
+    "_WORKING_LOADING": "Traitement du fichier en cours",
+    "_NEW_DOWNLOAD": "Nouvelle conversion"
 }
