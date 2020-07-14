@@ -1,0 +1,18 @@
+{
+    "_INPUT_URL": "Liens vers le contenue YouTube",
+    "_BUTTON_DOWNLOAD": "Télécharger",
+    "_LINK_INVALID": "Ce liens YouTube est invalide",
+    "_CLICK_TO_DOWNLOAD": "Cliquez pour télécharger",
+
+    "_MIME": "Type",
+    "_QUALITY": "Qualiter",
+    "_TYPE": "Résolution",
+    "_CODEC": "Codec",
+    "_SIZE": "Taille",
+    "_DOWNLOAD": "Téléchargement",
+    "audio only tiny": "Seulement l'audio",
+    " audio only tiny": "Seulement l'audio",
+
+    "_RECOMMENDED": "Recommender",
+    "_WORKING_LOADING": "Traitement du fichier en cours"
+}
