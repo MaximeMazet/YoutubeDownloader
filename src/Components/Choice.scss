@@ -1,0 +1,32 @@
+table{
+	padding: 20px;
+	width: 100%;
+	text-align: center;
+	th {
+		background: linear-gradient(to bottom, #ee2b2b,#fa4343);
+		padding: 6px 10px;
+		border-radius: 5px;
+		color: #fff;
+	}
+
+	td {
+		background: #dbbcbc;
+		border-radius: 5px;
+		color: #000;
+		padding: 6px 10px;
+	}
+	
+	tr:nth-child(odd) td {
+		background: #f8dcdc;
+	}
+	
+	tr td:last-child {
+		width: 10%;
+		text-align: center;
+	}
+
+	tr:hover td {
+		background: #f45858;
+		color: #fff;
+	}
+}
