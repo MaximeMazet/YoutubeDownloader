@@ -1,0 +1,30 @@
+
+    .valid-url-button{
+        width: 10%;
+        border: solid rgb(68, 68, 68) 1px;
+        border-radius: 10px;
+        height: 35px;
+        width: 200px;
+        background-color: #007bff;
+        color: #FFF;
+        &:disabled{
+            background-color: #002f61 !important;
+            color: rgb(180, 180, 180);
+        }
+        &:hover{
+            background-color: #0061c9;
+        }
+    }
+
+    .download-button{
+        width: 10%;
+        border: solid rgb(68, 68, 68) 1px;
+        border-radius: 10px;
+        height: 35px;
+        width: auto;
+        background-color: #007bff;
+        color: #FFF;
+        &:hover{
+            background-color: #0061c9;
+        }
+    }
