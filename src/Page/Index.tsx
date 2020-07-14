@@ -4,7 +4,7 @@ import {withTranslation, WithTranslation} from 'react-i18next'
 
 import './Index.scss'
 import { EnterUrl } from '../Components/EnterUrl'
-import { fetchBack } from '../Utils/Global/function'
+import { fetchBack, fetchBackFile } from '../Utils/Global/function'
 import { Choice } from '../Components/Choice'
 import { Media } from '../Types/Media'
 import { Loading } from '../Components/Modal/Loading'
@@ -14,6 +14,7 @@ export interface IndexState {
     medias: Array<Media>
     valid: boolean
     loading: boolean
+    fileName: string
 }
 
 class Index extends React.Component<WithTranslation, {}, IndexState> {
@@ -22,7 +23,8 @@ class Index extends React.Component<WithTranslation, {}, IndexState> {
         url: "",
         medias: [],
         valid: false,
-        loading: false
+        loading: false,
+        fileName: ""
     }
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,24 +43,33 @@ class Index extends React.Component<WithTranslation, {}, IndexState> {
     }
 
     async sendUrlToBack(){
-        let medias = await fetchBack('youtube/mime',"POST", [], {
+        let response = await fetchBack('youtube/mime',"POST", [], {
             url: this.state.url
         })
-
-        this.setState({medias})
+        let medias = response['mime']
+        let fileName = response['fileName']
+        this.setState({medias, fileName})
     }
 
     async downloadFile(code: string){
         this.setState({loading: true})
-        let downloadMedia = await fetchBack('youtube/download',"POST", [], {
+        let downloadMedia = await fetchBackFile('youtube/download',"POST", [], {
             code: code,
             url: this.state.url
         })
 
         if (downloadMedia){
             this.setState({loading: false})
-            console.log(downloadMedia)
-            window.location.href = downloadMedia['media']
+            let a = document.createElement('a')
+            document.body.appendChild(a)
+            let url = window.URL.createObjectURL(downloadMedia)
+            let reader = new FileReader()
+            console.log(reader.readAsDataURL(downloadMedia))
+            a.href = url
+            a.download = this.state.fileName
+            a.click()
+            window.URL.revokeObjectURL(url)
+            document.body.removeChild(a)
         }
     }
 
