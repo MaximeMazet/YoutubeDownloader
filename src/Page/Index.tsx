@@ -51,7 +51,7 @@ class Index extends React.Component<WithTranslation, {}, IndexState> {
         this.setState({medias, fileName})
     }
 
-    async downloadFile(code: string){
+    async downloadFile(code: string, extension: string){
         this.setState({loading: true})
         let downloadMedia = await fetchBackFile('youtube/download',"POST", [], {
             code: code,
@@ -66,11 +66,15 @@ class Index extends React.Component<WithTranslation, {}, IndexState> {
             let reader = new FileReader()
             console.log(reader.readAsDataURL(downloadMedia))
             a.href = url
-            a.download = this.state.fileName
+            a.download = this.state.fileName + "." + extension
             a.click()
             window.URL.revokeObjectURL(url)
             document.body.removeChild(a)
         }
+    }
+
+    reset = () => {
+        this.setState({medias: [], fileName: "", valid: false, loading: false, url: ""})
     }
 
     render(){
@@ -79,7 +83,11 @@ class Index extends React.Component<WithTranslation, {}, IndexState> {
                 {
                     this.state.medias !== undefined && this.state.medias.length !== 0 
                     ?
-                        <Choice medias={this.state.medias} download={(code: string) => this.downloadFile(code)} />
+                        <Choice 
+                            medias={this.state.medias} 
+                            download={(code: string, extension: string) => this.downloadFile(code, extension)}
+                            reset={() => this.reset()}
+                        />
                     :
                         <EnterUrl 
                             handleChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleChange(event)} 
